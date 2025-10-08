@@ -211,3 +211,12 @@ TYPES OF THREADPOOLS AVAILABLE :
     Managing threads manually can be complex and error-prone.
     It can lead to complex issues like resource contention, thread creation overhead, and scalability challenges.
     For these reasons, you'll want to use an ExecutorService, even when working with a single thread.
+
+CALLABLES AND FUTURES:
+
+    Runnables do not return a result. If we want to execute a task that returns a result, we can use the Callable interface. The Callable interface is a functional interface that has only one method:
+
+    The call method returns a result of type V. The call method can throw an exception. The Callable interface is used to execute tasks that return a result. For instance we can use the Callable interface to execute a task that returns the sum of two numbers:
+
+
+    Refer Executor Service examples.
