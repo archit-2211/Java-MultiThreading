@@ -1,0 +1,5 @@
+Here we do not need to implement the concrete logic to download files. In order to better understand the logic of multi threading , we are taking different examples to understand how the structure of 
+code looks like and what are the components we might use to execute tnis in multi threaded way. 
+
+In this example, lets say downloading files is one of the expensive processes, so lets download it one by one 
+Lets use SingleThreadExecutor to download files one by one ; 

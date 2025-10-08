@@ -35,13 +35,14 @@ public class Sorter implements Callable<List<Integer>>{
             rightArray.add(this.numbers.get(i)) ; 
         }
         
-        
+
         Future<List<Integer>> leftSorted = executor.submit(new Sorter(leftArray, executor)) ; 
         Future<List<Integer>> rightSorted = executor.submit(new Sorter(rightArray, executor)) ; 
 
         leftArray = leftSorted.get() ; 
         rightArray = rightSorted.get() ; 
-
+        
+        
         return this.merge(leftArray, rightArray);
    
     }
