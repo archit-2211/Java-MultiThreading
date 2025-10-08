@@ -127,3 +127,87 @@ MULTI-THREADING IN JAVA :
 
 Lets take an example to understand how we can create separate thread to handle separate tasks. 
 Refer to NUMBER PRINTING DIRECTORY 
+
+
+
+
+EXECUTORS AND CALLABLES IN JAVA : 
+
+    Imagine you have a computer program that needs to do several tasks at the same time. For example, your program might need to download files, process data, and update a user interface simultaneously. 
+    In the traditional way of programming, you might use threads to handle these tasks. However, managing threads manually can be complex and error-prone. Java ExecutorService implementations let you stay focused on tasks that need to be run, rather than thread creation and management.
+    Think of a chef in a kitchen as your program. The chef has multiple tasks like chopping vegetables, cooking pasta, and baking a cake. Instead of the chef doing each task one by one, the chef hires sous-chefs (threads) to help. The chef (Executor Framework) can assign tasks to sous-chefs efficiently, 
+    ensuring that multiple tasks are happening simultaneously, and the kitchen operates smoothly.
+    In Java, the Executor Framework provides a convenient way to implement this idea in your code, making it more readable, maintainable, and efficient. It simplifies the process of managing tasks concurrently, so you can focus on solving the problems your program is designed to address.
+
+    We have this executors available in Java.util.concurrent package that can effectively handle thread lifecycles. 
+    Depending upon our need we can use different threadpools available in executor 
+
+    Creating threads, destroying threads, and then creating them again can be expensive.
+    A thread pool mitigates the cost, by keeping a set of threads around, in a pool, for current and future work.
+    Threads, once they complete one task, can then be reassigned to another task, without the expense of destroying that thread and creating a new one.
+    A thread pool consists of three components.
+
+    Worker Threads are available in a pool to execute tasks. They're pre-created and kept alive, throughout the lifetime of the application.
+
+    Submitted Tasks are placed in a First-In First-Out queue. Threads pop tasks from the queue, and execute them, so they're executed in the order they're submitted.
+
+    The Thread Pool Manager allocates tasks to threads, and ensures proper thread synchronization.
+
+TYPES OF THREADPOOLS AVAILABLE : 
+
+    1. FixedThreadPool 
+
+        This fixes the number of threads that can be created to effectively manage the cost of creating and destroying multiple threads. The threads are created when the threadpool is assigned 
+        and the tasks are reassigned to the idle threads. 
+        If all threads are busy, tasks wait in FIFO queue untill the one of the thread becomes available
+
+    2. CachedThreadPool 
+
+        This threadpool dynamically adjust the number of threads based on the demand.
+        Creates new threads as needed, but reuses idle threads if available.
+        Threads that are idle for a certain duration are terminated.
+        Suitable for handling a large number of short-lived tasks.
+    
+    3. SingLeThreadExecutor 
+
+        This thread pool has a single thread executing the tasks. All the tasks wait in the FIFO queue to complete its execution. 
+    
+    4. ScheduledThreadPool 
+
+        Mostly similar to fixedThreadPool but has added dlexibilituy of delaying the execution of tasks. 
+        Suitable for periodic tasks 
+    
+    5. WorkStealingPool 
+
+        Efficient to use in multi core systems. 
+        Adjusts the threads to available processors 
+        Each processor has its own Thread queue 
+        Suitable to use in parallel tasks. 
+
+    Advantages :
+
+        1. Simplifies Task Execution
+
+        The Executor Framework makes it easier to execute tasks concurrently. It abstracts away the low-level details of managing threads, so you don't have to worry about creating and controlling them yourself.
+
+        2. Efficient Resource Utilization:
+
+        When you have many tasks to perform, creating a new thread for each task can be inefficient. The Executor Framework provides a pool of threads that can be reused for multiple tasks. This reuse of threads reduces the overhead of creating and destroying threads for every task.
+
+        3. Better Control and Flexibility
+
+        With the Executor Framework, you can control how many tasks can run simultaneously, manage the lifecycle of threads, and specify different policies for task execution. This level of control is important for optimizing the performance of your program.
+
+        4. Enhanced Scalability
+
+        When your program needs to handle more tasks, the Executor Framework makes it easier to scale. You can adjust the size of the thread pool to accommodate more tasks without rewriting a lot of code.
+
+        5. Task Scheduling
+
+        The framework allows you to schedule tasks to run at specific times or after certain intervals. This is useful for scenarios where you want to automate repetitive tasks or execute tasks at specific points in time.
+
+    Summary
+
+    Managing threads manually can be complex and error-prone.
+    It can lead to complex issues like resource contention, thread creation overhead, and scalability challenges.
+    For these reasons, you'll want to use an ExecutorService, even when working with a single thread.
