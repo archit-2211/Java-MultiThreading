@@ -1,0 +1,5 @@
+Many image processing applications like Lightroom & Photoshop use multiple threads to process an image quickly. In this problem, you will build a simplified image repainting task using multiple threads, the repainting task here simply doubles the value of every pixel stored in the form of a 2D array. Take Input a NXN matrix and repaint it by using 4 threads, one for each quadrant.
+
+Solution Repainting a 2D array using four threads can be achieved by dividing the array into quadrants, and assigning each quadrant to a separate thread for repainting.
+
+This example divides the 2D array into four quadrants and assigns each quadrant to a separate thread for repainting. The ArrayRepainterTask class represents the task for repainting a specific quadrant. The program then uses an ExecutorService with a fixed thread pool to concurrently execute the tasks. Finally, it prints the repainted 2D array.
