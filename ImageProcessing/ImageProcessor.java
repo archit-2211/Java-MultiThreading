@@ -1,4 +1,4 @@
-package DownloadManager.ImageProcessing;
+package ImageProcessing;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ExecutorService;
