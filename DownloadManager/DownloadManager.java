@@ -1,13 +1,26 @@
 package DownloadManager;
 
-import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.*;
 
-public class DownloadManager implements Callable {
+public class DownloadManager  {
+    private ExecutorService ex ; 
 
-    @Override
-    public Object call() throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'call'");
+    public DownloadManager(ExecutorService ex) {
+        this.ex = ex ; 
+
     }
+
+
+    public void linkDownloader(List<String> links) {
+        for (String link : links) {
+            ex.submit(() -> {
+                System.out.println("Downloading the link" + link + "     " + Thread.currentThread().getName());
+            });
+        }
+
+    }
+
+
     
 }
